@@ -6,6 +6,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { FaPrayingHands } from 'react-icons/fa'; // Bu sətri əlavə edin
+import { FaMapMarkerAlt } from 'react-icons/fa'; // Bu sətri əlavə edin
+import { FaPhone } from 'react-icons/fa'; // Bu sətri əlavə edin
+import { FaEnvelope } from 'react-icons/fa'; // Bu sətri əlavə edin
+
 import {Grid, Navigation, Pagination, Autoplay} from "swiper/modules";
 
 const Home = () => {
@@ -18,23 +23,23 @@ const Home = () => {
         isha: '--'
     });
     
+    
     const [currentDate, setCurrentDate] = useState('');
     const [currentPrayer, setCurrentPrayer] = useState('');
-    const [timeLeft, setTimeLeft] = useState(''); // Yeni state: qalan zaman
-    const [nextPrayer, setNextPrayer] = useState(''); // Yeni state: növbəti namaz
+    const [timeLeft, setTimeLeft] = useState({ hours: '--', minutes: '--', seconds: '--' });
+    const [nextPrayer, setNextPrayer] = useState({ name: '', displayName: '' });
 
     useEffect(() => {
         updateCurrentDate();
         fetchPrayerTimes();
-        highlightCurrentPrayer();
         
-        const interval = setInterval(() => {
-            highlightCurrentPrayer();
-            updateTimeLeft(); // Hər dəqiqə qalan zamanı yenilə
-        }, 600000000);
+        // Saniyəlik yeniləmə üçün interval qur
+        const timer = setInterval(() => {
+            updateCurrentTime();
+        }, 1000);
         
-        return () => clearInterval(interval);
-    }, []); // prayerTimes dəyişdikdə də təzələ
+        return () => clearInterval(timer);
+    }, []);
 
     const updateCurrentDate = () => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -45,148 +50,159 @@ const Home = () => {
 
     const fetchPrayerTimes = async () => {
         try {
-            // JSONBin.io API-dan məlumatları çək
             const response = await fetch('https://api.jsonbin.io/v3/b/681641458561e97a500d1cd7', {
                 headers: {
-                    'X-Master-Key': '$2a$10$TirNs59Qi3Qh3dKcRHAqh.TSvGR3IaH72vYPOM9AYWc0Bo/iJZawC ' // Əgər tələb olunarsa
+                    'X-Master-Key': '$2a$10$TirNs59Qi3Qh3dKcRHAqh.TSvGR3IaH72vYPOM9AYWc0Bo/iJZawC'
                 }
             });
             const data = await response.json();
             
-            // Cari tarixi al
             const today = new Date();
-            const currentDay = today.getDate(); // Ayın neçənci günü (1-31)
-            const currentMonth = today.toLocaleString('az-AZ', { month: 'long' }); // "May"
+            const currentDay = today.getDate();
             
-            // JSON-dan uyğun günü tap
-            const todayData =await data.record.prayerTimes.find(item => {
-                // Tarix formatı: "3 May" - ayın 3-ü
-                const [day, month] = item.date.split(' ');
+            const todayData = data.record.prayerTimes.find(item => {
+                const [day] = item.date.split(' ');
                 return parseInt(day) === currentDay;
             });
             
             if (todayData) {
-                setPrayerTimes({
+                const newPrayerTimes = {
                     fajr: todayData.fajr,
                     sunrise: todayData.sunrise,
                     dhuhr: todayData.dhuhr,
                     asr: todayData.asr,
                     maghrib: todayData.maghrib,
                     isha: todayData.isha
-                });
+                };
+                setPrayerTimes(newPrayerTimes);
+                updateCurrentTime(newPrayerTimes);
             } else {
                 console.error('Bugünkü namaz vaxtları tapılmadı');
-                // Əgər bugünkü məlumat tapılmasa, default dəyərlər istifadə et
-                setPrayerTimes({
+                const defaultTimes = {
                     fajr: '04:05',
                     sunrise: '05:37',
                     dhuhr: '12:37',
                     asr: '17:34',
                     maghrib: '19:54',
                     isha: '21:03'
-                });
+                };
+                setPrayerTimes(defaultTimes);
+                updateCurrentTime(defaultTimes);
             }
         } catch (error) {
             console.error('Namaz vaxtları yüklənərkən xəta baş verdi:', error);
-            // Əgər API işləməsə, default dəyərlər qalacaq
-            setPrayerTimes({
+            const defaultTimes = {
                 fajr: '04:05',
                 sunrise: '05:37',
                 dhuhr: '12:37',
                 asr: '17:34',
                 maghrib: '19:54',
                 isha: '21:03'
+            };
+            setPrayerTimes(defaultTimes);
+            updateCurrentTime(defaultTimes);
+        }
+    };
+
+    const updateCurrentTime = (prayerData = prayerTimes) => {
+        const now = new Date();
+        const currentTime = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+        
+        const prayers = [
+            { name: 'fajr', displayName: 'Sübh', time: prayerData.fajr },
+            { name: 'sunrise', displayName: 'Günəş', time: prayerData.sunrise },
+            { name: 'dhuhr', displayName: 'Zöhr', time: prayerData.dhuhr },
+            { name: 'asr', displayName: 'Əsr', time: prayerData.asr },
+            { name: 'maghrib', displayName: 'Məğrib', time: prayerData.maghrib },
+            { name: 'isha', displayName: 'İşa', time: prayerData.isha }
+        ];
+        
+        // Namaz vaxtlarını saniyəyə çevir
+        const prayerTimesInSeconds = prayers.map(prayer => {
+            const [hours, minutes] = prayer.time.split(':').map(Number);
+            return {
+                ...prayer,
+                timeInSeconds: hours * 3600 + minutes * 60
+            };
+        });
+        
+        // Cari və növbəti namazı tap
+        let currentPrayerObj = null;
+        let nextPrayerObj = null;
+        
+        // Əgər cari vaxt bütün namaz vaxtlarından sonradırsa, növbəti günün sübh namazına qədər
+        if (currentTime >= prayerTimesInSeconds[prayerTimesInSeconds.length - 1].timeInSeconds) {
+            currentPrayerObj = prayerTimesInSeconds[prayerTimesInSeconds.length - 1];
+            nextPrayerObj = { 
+                ...prayerTimesInSeconds[0], 
+                timeInSeconds: prayerTimesInSeconds[0].timeInSeconds + 24 * 3600 // Növbəti günə əlavə et
+            };
+        } else {
+            for (let i = 0; i < prayerTimesInSeconds.length; i++) {
+                if (currentTime < prayerTimesInSeconds[i].timeInSeconds) {
+                    nextPrayerObj = prayerTimesInSeconds[i];
+                    currentPrayerObj = i > 0 ? prayerTimesInSeconds[i - 1] : null;
+                    break;
+                }
+            }
+        }
+        
+        // Cari namazı təyin et
+        setCurrentPrayer(currentPrayerObj?.name || '');
+        
+        // Növbəti namazı təyin et və qalan vaxtı hesabla
+        if (nextPrayerObj) {
+            setNextPrayer({
+                name: nextPrayerObj.name,
+                displayName: nextPrayerObj.displayName
+            });
+            
+            const timeLeftInSeconds = nextPrayerObj.timeInSeconds - currentTime;
+            const hoursLeft = Math.floor(timeLeftInSeconds / 3600);
+            const minutesLeft = Math.floor((timeLeftInSeconds % 3600) / 60);
+            const secondsLeft = timeLeftInSeconds % 60;
+            
+            setTimeLeft({
+                hours: hoursLeft.toString().padStart(2, '0'),
+                minutes: minutesLeft.toString().padStart(2, '0'),
+                seconds: secondsLeft.toString().padStart(2, '0')
             });
         }
     };
-    const updateTimeLeft = () => {
-        const now = new Date();
-        const currentTime = now.getHours() * 60 + now.getMinutes();
-        
-        const prayers = [
-            { name: 'fajr', displayName: 'Sübh', time: prayerTimes.fajr },
-            { name: 'sunrise', displayName: 'Günəş', time: prayerTimes.sunrise },
-            { name: 'dhuhr', displayName: 'Zöhr', time: prayerTimes.dhuhr },
-            { name: 'asr', displayName: 'Əsr', time: prayerTimes.asr },
-            { name: 'maghrib', displayName: 'Məğrib', time: prayerTimes.maghrib },
-            { name: 'isha', displayName: 'İşa', time: prayerTimes.isha }
-        ];
-        
-        // Növbəti namazı tap
-        let nextPrayerObj = null;
-        for (let i = 0; i < prayers.length; i++) {
-            const [hours, minutes] = prayers[i].time.split(':').map(Number);
-            const prayerTime = hours * 60 + minutes;
-            
-            if (currentTime < prayerTime) {
-                nextPrayerObj = prayers[i];
-                break;
-            }
-        }
-        
-        // Əgər bütün vaxtlar keçibsə, növbəti günün sübhünə qədər İşa qalır
-        if (!nextPrayerObj) {
-            nextPrayerObj = prayers[0]; // Sübh
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-        }
-        
-        if (nextPrayerObj) {
-            setNextPrayer(nextPrayerObj.displayName);
-            
-            // Qalan zamanı hesabla
-            const [hours, minutes] = nextPrayerObj.time.split(':').map(part => parseInt(part, 10));
-const prayerDate = new Date();
-prayerDate.setHours(hours, minutes, 0, 0);
-
-// Check if the prayer time has passed for today
-if (prayerDate < now) {
-    prayerDate.setDate(prayerDate.getDate() + 1);
-}
-
-const diffMs = prayerDate - now;
-
-// Ensure we don't get negative values or NaN
-if (isNaN(diffMs) || diffMs < 0) {
-    setTimeLeft("0 saat 0 dəqiqə");
-} else {
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+      });
     
-    setTimeLeft(`${diffHours} saat ${diffMinutes} dəqiqə`);
-}
-        }
-    };
-
-    const highlightCurrentPrayer = () => {
-        const now = new Date();
-        const currentTime = now.getHours() * 60 + now.getMinutes();
+      const [isSubmitting, setIsSubmitting] = useState(false);
+      const [submitStatus, setSubmitStatus] = useState(null);
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+          ...prev,
+          [name]: value
+        }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
         
-        const prayers = [
-            { name: 'fajr', time: prayerTimes.fajr },
-            { name: 'sunrise', time: prayerTimes.sunrise },
-            { name: 'dhuhr', time: prayerTimes.dhuhr },
-            { name: 'asr', time: prayerTimes.asr },
-            { name: 'maghrib', time: prayerTimes.maghrib },
-            { name: 'isha', time: prayerTimes.isha }
-        ];
+        // Burada form məlumatlarını göndərə bilərsiniz
+        console.log('Form göndərildi:', formData);
         
-        let current = '';
-        
-        for (let i = 0; i < prayers.length; i++) {
-            const [hours, minutes] = prayers[i].time.split(':').map(Number);
-            const prayerTime = hours * 60 + minutes;
-            
-            if (currentTime >= prayerTime && 
-                (i === prayers.length - 1 || currentTime < prayers[i + 1].time.split(':').map(Number).reduce((h, m) => h * 60 + m))) {
-                current = prayers[i].name;
-                break;
-            }
-        }
-        
-        setCurrentPrayer(current);
-        updateTimeLeft(); // Cari namaz dəyişdikdə qalan zamanı yenilə
-    };
+        // Simulyasiya üçün setTimeout
+        setTimeout(() => {
+          setIsSubmitting(false);
+          setSubmitStatus('success');
+          setFormData({ name: '', email: '', message: '' });
+          
+          // 5 saniyədən sonra statusu sıfırla
+          setTimeout(() => setSubmitStatus(null), 5000);
+        }, 1500);
+      };
 
     return (
         <>
@@ -224,9 +240,8 @@ if (isNaN(diffMs) || diffMs < 0) {
                         <h1 className={style.voucherSwipe10} style={{color:"orange",backgroundColor:"rgba(255,255,255,0.7)",borderRadius:"20px",padding:"10px"}}>
                         Məscidə Gözəlliklə Gəlmək:
 "Ey Adəm oğulları! Hər məscidə gedəndə zinətinizi götürün (gözəl geyinin)..."
-(Ə’raf surəsi, 31-ci ayə)
-
-</h1>
+(Ə'raf surəsi, 31-ci ayə)
+                        </h1>
                     </div>
                 </SwiperSlide>
             </Swiper>
@@ -234,22 +249,20 @@ if (isNaN(diffMs) || diffMs < 0) {
             <div className={style.namazContainer}>
                 <div className={style.header}>
                     <h1>Bakı Namaz Vaxtları</h1>
-                    <p>Bugünkü namaz vaxtları</p>
+                    <p>{currentDate}</p>
                 </div>
                 
-                
-                
-                {/* Qalan zamanı göstərən yeni hissə */}
-                {timeLeft && nextPrayer && (
+                {nextPrayer.name && (
                     <div className={style.timeLeftDisplay}>
-                        Növbəti namaz (<strong>{nextPrayer}</strong>) üçün qalan zaman: <strong>{timeLeft}</strong>
+                        Növbəti namaz (<strong>{nextPrayer.displayName}</strong>) üçün qalan zaman: 
+                        <strong> {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}</strong>
                     </div>
                 )}
                 
                 <div className={style.timesContainer}>
-                    <div className={style.prayerTime}>
+                    <div className={`${style.prayerTime} ${currentPrayer === 'fajr' ? style.currentTime : ''}`}>
                         <span className={style.prayerName}>Sübh</span>
-                        <span className={`${style.prayerTimeValue} ${currentPrayer === 'fajr' ? style.currentTime : ''}`}>
+                        <span className={style.prayerTimeValue}>
                             {prayerTimes.fajr}
                         </span>
                     </div>
@@ -259,27 +272,27 @@ if (isNaN(diffMs) || diffMs < 0) {
                             {prayerTimes.sunrise}
                         </span>
                     </div>
-                    <div className={style.prayerTime}>
+                    <div className={`${style.prayerTime} ${currentPrayer === 'dhuhr' ? style.currentTime : ''}`}>
                         <span className={style.prayerName}>Zöhr</span>
-                        <span className={`${style.prayerTimeValue} ${currentPrayer === 'dhuhr' ? style.currentTime : ''}`}>
+                        <span className={style.prayerTimeValue}>
                             {prayerTimes.dhuhr}
                         </span>
                     </div>
-                    <div className={style.prayerTime}>
+                    <div className={`${style.prayerTime} ${currentPrayer === 'asr' ? style.currentTime : ''}`}>
                         <span className={style.prayerName}>Əsr</span>
-                        <span className={`${style.prayerTimeValue} ${currentPrayer === 'asr' ? style.currentTime : ''}`}>
+                        <span className={style.prayerTimeValue}>
                             {prayerTimes.asr}
                         </span>
                     </div>
-                    <div className={style.prayerTime}>
+                    <div className={`${style.prayerTime} ${currentPrayer === 'maghrib' ? style.currentTime : ''}`}>
                         <span className={style.prayerName}>Məğrib</span>
-                        <span className={`${style.prayerTimeValue} ${currentPrayer === 'maghrib' ? style.currentTime : ''}`}>
+                        <span className={style.prayerTimeValue}>
                             {prayerTimes.maghrib}
                         </span>
                     </div>
-                    <div className={style.prayerTime}>
+                    <div className={`${style.prayerTime} ${currentPrayer === 'isha' ? style.currentTime : ''}`}>
                         <span className={style.prayerName}>İşa</span>
-                        <span className={`${style.prayerTimeValue} ${currentPrayer === 'isha' ? style.currentTime : ''}`}>
+                        <span className={style.prayerTimeValue}>
                             {prayerTimes.isha}
                         </span>
                     </div>
@@ -289,8 +302,116 @@ if (isNaN(diffMs) || diffMs < 0) {
                     Vaxtlar dəqiqdir | Bakı şəhəri
                 </div>
             </div>
+            <div className={style.Categories}>
+                <div className={style.CategoriesOne}><i id={style.Ids} className="fa-solid fa-person-praying"></i><h3 className={style.StilCategories}>Namaz</h3></div>
+                <div className={style.CategoriesTwo}><i id={style.Idss}  className="fa-solid fa-book-quran"></i><h3 className={style.StilCategoriess}>Qurani Kərim</h3></div>
+                <div className={style.CategoriesThree}><i id={style.Idsss} className="fa-solid fa-mosque"></i><h3 className={style.StilCategoriesss}>Xütbələr</h3></div>
+            </div>
+            <div className={style.contactSection}>
+      <h2 className={style.sectionHeader}>
+        <FaPrayingHands className={style.headerIcon} />
+        Bizimlə Əlaqə
+      </h2>
+      
+      <div className={style.contactContainer}>
+        {/* Əlaqə məlumatları */}
+        <div className={style.contactInfo}>
+          <div className={style.infoCard}>
+            <h3 className={style.infoTitle}>İlahiyyat Məscidi</h3>
+            
+            <div className={style.infoItem}>
+              <FaMapMarkerAlt className={style.infoIcon} />
+              <div>
+                <p className={style.infoLabel}>Ünvan:</p>
+                <p className={style.infoText}>Bakı şəhəri, İlahiyyat Məscidi</p>
+              </div>
+            </div>
+            
+            <div className={style.infoItem}>
+              <FaPhone className={style.infoIcon} />
+              <div>
+                <p className={style.infoLabel}>Telefon:</p>
+                <p className={style.infoText}>+994 12 345 67 89</p>
+              </div>
+            </div>
+            
+            <div className={style.infoItem}>
+              <FaEnvelope className={style.infoIcon} />
+              <div>
+                <p className={style.infoLabel}>Email:</p>
+                <p className={style.infoText}>info@ilahiyyatmescidi.az</p>
+              </div>
+            </div>
+            
+            <div className={style.mapContainer}>
+                
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6079.046928225745!2d49.805526568153056!3d40.37508958201237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307deeb49b9191%3A0x6caf84652558a590!2zxLBsYWhpeXlhdCBNyZlzY2lkaQ!5e0!3m2!1saz!2saz!4v1746486329593!5m2!1saz!2saz" 
+                width="100%" 
+                height="300" 
+                style={{border:0}} 
+                allowFullScreen="" 
+                loading="lazy"
+                title="İlahiyyat Məscidi Xəritə"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        
+        {/* Əlaqə formu */}
+        <div className={style.contactFormWrapper}>
+          <form className={style.contactForm}>
+            <h3 className={style.formTitle}>Mesaj Göndər</h3>
+            
+            <div className={style.formGroup}>
+              <input 
+                type="text" 
+                id="name" 
+                placeholder="Adınız" 
+                className={style.formInput}
+                required
+              />
+            </div>
+            
+            <div className={style.formGroup}>
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="Email ünvanınız" 
+                className={style.formInput}
+                required
+              />
+            </div>
+            
+            <div className={style.formGroup}>
+              <input 
+                type="tel" 
+                id="phone" 
+                placeholder="Telefon nömrəniz" 
+                className={style.formInput}
+              />
+            </div>
+            
+            <div className={style.formGroup}>
+              <textarea 
+                id="message" 
+                rows="5" 
+                placeholder="Mesajınız..." 
+                className={style.formTextarea}
+                required
+                style={{resize:"none"}}
+              ></textarea>
+            </div>
+            
+            <button type="submit" className={style.submitButton}>
+              Mesajı Göndər
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
         </>
     );
 };
 
-export default Home;
+export default Home;

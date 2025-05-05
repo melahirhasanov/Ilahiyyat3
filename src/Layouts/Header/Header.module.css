@@ -110,7 +110,7 @@
     color: rgb(251, 253, 255);
     padding: 10px 15px;
     transition: all 0.3s ease;
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .HeaderNavbar1:hover {
@@ -258,7 +258,7 @@
 
 /* Scroll olduqda tətbiq olunacaq stil */
 .Header1DDiv.scrolled {
-    background-color: rgb(0, 0, 0); /* Daha qatı ağ rəng */
+    background-color: rgb(255, 255, 255); /* Daha qatı ağ rəng */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 

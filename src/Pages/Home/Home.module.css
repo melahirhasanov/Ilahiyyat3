@@ -38,7 +38,7 @@ object-fit:cover;
 font-family:Verdana, Geneva, Tahoma, sans-serif;
 font-size: 15px;
 margin: -40px 100px;
-margin-top: 60px;
+margin-top: 100px;
 
 }
 .baton10{
@@ -272,10 +272,15 @@ width: 130px;
   
   .SwiperImg10 {
     width: 100%;
-    max-height: 700px;
     height: 700px;
-    object-fit: cover;
-  }
+    object-fit:cover;
+    object-position: center; 
+    image-rendering: crisp-edges; /* Kəskin kənarlar üçün */
+    image-rendering: auto;
+    
+     /* Chrome üçün optimize *//* Şəklin mərkəz hissəsini göstər */
+}
+  
   
   /* Digər swiper stilləri eyni qala bilər */
   /* ... */
@@ -284,3 +289,299 @@ width: 130px;
     margin-top: 50px; /* Headerlə arasında boşluq */
     /* Digər stillər eyni qala bilər */
   }
+  .Categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #0ad6d6;
+    width: 100%;
+    padding: 30px 0px;
+    margin-top: 100px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+  }
+  .CategoriesOne{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+ 
+  #Ids{
+font-size: 60px;
+background-color: rgb(62, 215, 7);
+border-radius: 50%;
+padding: 30px;
+color: aliceblue;
+
+  }
+  .StilCategories{
+    text-align: center;
+    margin: 20px;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .CategoriesTwo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+ 
+  #Idss{
+font-size: 60px;
+background-color: rgb(62, 215, 7);
+border-radius: 50%;
+padding: 30px;
+color: aliceblue;
+
+  }
+  .StilCategoriess{
+    text-align: center;
+    margin:20px 10px;
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+  }
+  .CategoriesThree{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+ 
+  #Idsss{
+font-size: 60px;
+background-color: rgb(62, 215, 7);
+border-radius: 50%;
+padding: 30px;
+color: aliceblue;
+
+  }
+  .StilCategoriesss{
+    text-align: center;
+    margin: 20px;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  @media(max-width:700px) {
+    .Categories{
+   
+      width: 100%;
+
+  
+    }
+
+   
+    #Ids{
+  font-size: 50px;
+  padding: 15px;
+  
+    }
+    .StilCategories{
+      margin: 10px;
+      font-size: 15px;
+    }
+    
+
+   
+    #Idss{
+  font-size: 50px;
+  padding: 15px;
+  
+    }
+    .StilCategoriess{
+      margin:10px 0px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+   
+    #Idsss{
+  font-size: 50px;
+  padding: 15px;
+  
+    }
+    .StilCategoriesss{
+      margin: 10px;
+      font-size: 15px;
+    }
+    
+  }
+/* Ümumi stillər */
+.contactSection {
+  font-family: 'Poppins', sans-serif;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.sectionHeader {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.headerIcon {
+  color: #3498db;
+}
+
+.contactContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Əlaqə məlumatları */
+.contactInfo {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.infoTitle {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.infoItem {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.infoIcon {
+  color: #3498db;
+  font-size: 1.2rem;
+  margin-top: 3px;
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: #7f8c8d;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.infoText {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.mapContainer {
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Əlaqə formu */
+.contactFormWrapper {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.formTitle {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formInput, .formTextarea {
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.formInput:focus, .formTextarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  background-color: white;
+}
+
+.formTextarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+/* Responsivlik */
+@media (max-width: 768px) {
+  .contactContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .sectionHeader {
+    font-size: 2rem;
+  }
+  
+  .infoTitle, .formTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animasiyalar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contactInfo, .contactFormWrapper {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.contactFormWrapper {
+  animation-delay: 0.2s;
+}
+  
