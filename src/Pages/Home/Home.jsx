@@ -34,7 +34,7 @@ const Home = () => {
         }, 600000000);
         
         return () => clearInterval(interval);
-    }, [prayerTimes]); // prayerTimes dəyişdikdə də təzələ
+    }, []); // prayerTimes dəyişdikdə də təzələ
 
     const updateCurrentDate = () => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -46,7 +46,7 @@ const Home = () => {
     const fetchPrayerTimes = async () => {
         try {
             // JSONBin.io API-dan məlumatları çək
-            const response = await fetch('https://api.jsonbin.io/v3/b/681641458561e97a500d1cd', {
+            const response = await fetch('https://api.jsonbin.io/v3/b/681641458561e97a500d1cd7', {
                 headers: {
                     'X-Master-Key': '$2a$10$TirNs59Qi3Qh3dKcRHAqh.TSvGR3IaH72vYPOM9AYWc0Bo/iJZawC ' // Əgər tələb olunarsa
                 }
@@ -135,20 +135,26 @@ const Home = () => {
             setNextPrayer(nextPrayerObj.displayName);
             
             // Qalan zamanı hesabla
-            const [hours, minutes] = nextPrayerObj.time.split(':').map(Number);
-            const prayerDate = new Date();
-            prayerDate.setHours(hours, minutes, 0, 0);
-            
-            // Əgər növbəti günün namazıdırsa (məsələn, indi saat 22:00-dirsə və növbəti sübhdirsə)
-            if (prayerDate < now) {
-                prayerDate.setDate(prayerDate.getDate() + 1);
-            }
-            
-            const diffMs = prayerDate - now;
-            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const [hours, minutes] = nextPrayerObj.time.split(':').map(part => parseInt(part, 10));
+const prayerDate = new Date();
+prayerDate.setHours(hours, minutes, 0, 0);
 
-            setTimeLeft(`${diffHours} saat ${diffMinutes} dəqiqə`);
+// Check if the prayer time has passed for today
+if (prayerDate < now) {
+    prayerDate.setDate(prayerDate.getDate() + 1);
+}
+
+const diffMs = prayerDate - now;
+
+// Ensure we don't get negative values or NaN
+if (isNaN(diffMs) || diffMs < 0) {
+    setTimeLeft("0 saat 0 dəqiqə");
+} else {
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    
+    setTimeLeft(`${diffHours} saat ${diffMinutes} dəqiqə`);
+}
         }
     };
 
@@ -195,7 +201,7 @@ const Home = () => {
                 modules={[Navigation,Pagination,Autoplay]}
             >
                 <SwiperSlide>
-                    <img style={{objectFit:"contain"}} className={style.SwiperImg10} src="https://i.pinimg.com/736x/de/45/c3/de45c39e984459599645d12560ca11a7.jpg" alt="" />
+                    <img className={style.SwiperImg10} src="https://i.pinimg.com/736x/8d/a8/9d/8da89dcf4b6e82296f4b9c337a7d902e.jpg" alt="" />
                     <div className={style.SwipeInfoDiv10}>
                         <h1 className={style.voucherSwipe10} style={{color:"orange",backgroundColor:"hsla(0, 0.00%, 100.00%, 0.70)",borderRadius:"20px",padding:"10px"}}>
                             Tövbe Sürəsi, 18. Ayə
