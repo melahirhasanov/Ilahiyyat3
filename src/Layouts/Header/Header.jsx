@@ -96,7 +96,7 @@ const Header = () => {
                                 <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Əlaqə")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Əlaqə</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Ximdətlərimiz")}
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Xidmətlərimiz")}
                                 } style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Xidmətlər</Typography>
                                 </Button>

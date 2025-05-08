@@ -1,0 +1,144 @@
+/* Header styles */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    margin-top: 80px;
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.headerTop {
+    padding: 1rem;
+    text-align: center;
+}
+
+.headerTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #07e062;
+}
+
+.navFull {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+}
+
+.navMain {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.navLink {
+    color: #0acb31;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.navLink:hover {
+    background-color: #e9ecef;
+}
+
+/* Mobile styles */
+.headerMobile {
+    display: none;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerTitleMobile {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+/* Content styles */
+.contentContainer {
+    margin-top: 100px;
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .heading {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #2d7a32;
+    font-weight: 500;
+  }
+  .YotubeCross{
+    color: rgb(10, 210, 241);
+    margin: auto;
+    text-align: center;
+  }
+  

@@ -1,288 +1,151 @@
-.Header2DDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(22, 20, 20);
-    padding: 10px;
-
-}
-.Header3DDiv{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(22, 20, 20);
-
-}
-.menu{
-    display: none;
-}
-.Header1{
-    font-size: 35px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(250, 253, 255);
-    
-}
-.Header11{
-    font-size: 35px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(240, 240, 240);
-}
-.Header2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(243, 248, 252);
-}
-.Header2DivNav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: rgb(22, 20, 20);
-
-}
-.HeaderNavbar1{
-    text-decoration: none;
-    color: rgb(11, 6, 6);
-    list-style-type: none;
-    padding: 10px;
-
-
-
-}
-
-@media(max-width:800px) {
-    .menu{
-        display: block;
-    }
-    .Header2DivNav{
-        display: none;
-    }
-    .Header3DDiv{
-        display: flex;
-        padding: 5px;
-
-    }
-    .Header2DDiv{
-        display: none;
-    }
-    .Header11{
-        font-size: 23px;}
-}
-
-  
-  .Header2DDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .Header3DDiv {
-    display: none;
-  }
-  
-  .Header1, .Header11 {
-    font-size: 35px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(255, 255, 255);
-  }
-  
-  .Header2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fcfcfc;
-  }
-  
-  .Header2DivNav {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(22, 20, 20);
-    padding: 10px 0;
-  }
-  
-  .HeaderNavbar1 {
-    text-decoration: none;
-    color: rgb(251, 253, 255);
-    padding: 10px 15px;
+/* Header styles */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
     transition: all 0.3s ease;
-    font-size: 18px;
-  }
-  
-  .HeaderNavbar1:hover {
-    background-color: rgb(40, 254, 72);
-    border-radius: 5px;
-  }
-  
-  .menu {
-    display: none;
-  }
-  
-  @media (max-width: 800px) {
-    .menu {
-      display: block;
-    }
-    
-    .Header2DivNav {
-      display: none;
-    }
-    
-    .Header3DDiv {
-      display: flex;
-      padding: 5px;
-    }
-    
-    .Header2DDiv {
-      display: none;
-    }
-    
-    .Header11 {
-      font-size: 23px;
-    }
+    margin-top: 80px;
+}
 
+.header.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.headerTop {
+    padding: 1rem;
+    text-align: center;
+}
+
+.headerTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #07e062;
+}
+
+.navFull {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+}
+
+.navMain {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.navLink {
+    color: #0acb31;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.navLink:hover {
+    background-color: #e9ecef;
+}
+
+/* Mobile styles */
+.headerMobile {
+    display: none;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerTitleMobile {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+/* Content styles */
+.contentContainer {
+    margin-top: 100px;
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
   }
-  .Header1DDiv {
-    background-color: rgba(57, 52, 52, 0.507);
-    position: fixed; /* Headeri səhifənin yuxarısında sabitləyir */
+  
+  .heading {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  .videoWrapper iframe {
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    margin-top: 70px;
-    z-index: 1000; /* Digər elementlərin üstündə olmasını təmin edir */
     width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.413);
-    
-    padding: 3px 0;
-    display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-   
+    height: 100%;
+    border: none;
+    border-radius: 12px 12px 0 0;
   }
   
-  .Header2DDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .title {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #2d7a32;
+    font-weight: 500;
+  }
+  .YotubeCross{
+    color: rgb(10, 210, 241);
+    margin: auto;
     text-align: center;
   }
-  
-  .Header3DDiv {
-    display: none;
-  }
-  
-  .Header1, .Header11 {
-    font-size: 35px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(0, 255, 115);
-  }
-  
-  .Header2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(7, 9, 11);
-  }
-  
-  .Header2DivNav {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(22, 20, 20);
-    padding: 10px 0;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .HeaderNavbar1 {
-    text-decoration: none;
-    color: rgb(31, 244, 70);
-    padding: 10px 15px;
-    transition: all 0.3s ease;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-  }
-  
-  .HeaderNavbar1:hover {
-    background-color: rgba(11, 195, 8, 0.758);
-    color: rgb(220, 223, 224);
-    border-radius: 5px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
-  
-  .menu {
-    display: none;
-  }
-  
-  @media (max-width: 800px) {
-    .menu {
-      display: block;
-    }
-    
-    .Header2DivNav {
-      display: none!important;
-    }
-    
-    .Header3DDiv {
-      display: flex;
-      padding: 5px;
-    }
-    
-    .Header2DDiv {
-      display: none;
-    }
-    
-    .Header11 {
-      font-size: 23px;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;;
-    }
-    .Header1DDiv{
+  @media (max-width:550px) {
+    #menu{
         display: block!important;
+
     }
+    
 
   }
-  .Header1DDiv {
-    background-color: rgb(22, 20, 20);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.413);
-    padding: 3px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    transition: all 0.3s ease; /* Smooth transition */
-}
-
-/* Scroll olduqda tətbiq olunacaq stil */
-.Header1DDiv.scrolled {
-    background-color: rgb(22, 20, 20);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Digər CSS qaydaları eyni qalır... */
-
-/* Scrolled vəziyyətində yazı rəngləri */
-.Header1DDiv.scrolled .Header1,
-.Header1DDiv.scrolled .Header11,
-.Header1DDiv.scrolled .Header2,
-.Header1DDiv.scrolled .HeaderNavbar1 {
-    color: #00f510; /* Daha tünd rəng */
-}
-
-.Header1DDiv.scrolled .HeaderNavbar1:hover {
-    background-color: rgb(0, 255, 106);
-    color: #000;
-}
-
-/* Mobil üçün xüsusi stil */
-  
-.Header2DivNav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(22, 20, 20);
-    padding: 10px 0;
-    width: 100%;
-    margin: 0 auto; /* Əlavə etdim - üfüqi mərkəzləşdirmə üçün */
-    text-align: center; /* Əlavə etdim - mətn üçün əlavə təhlükəsizlik */
-}

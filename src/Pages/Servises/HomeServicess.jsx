@@ -1,29 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import style from "./Header.module.css";
 import { NavLink, useNavigate } from 'react-router-dom';
+import { FiExternalLink } from 'react-icons/fi'; // react-icons importu
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-
+import MenuItem from '@mui/material/MenuItem'
 const HomeServices = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const sermons = [
+        {
+          title: "Ramazan Rəhmət ayıdır",
+          videoUrl: "https://www.youtube.com/embed/C_IZ25SxiN8?si=sRpsp_7ZNQ-mGxbC"
+        },
+        {
+          title: "Ramazanın hikməti və fəziləti",
+          videoUrl: "https://www.youtube.com/embed/yCrWUe4PJU4?si=yJ5y0COXxFoK55gO"
+        },
+        {
+          title: "Nəfs təzkiyəsi",
+          videoUrl: "https://www.youtube.com/embed/awpL6v9nnUM?si=ShIZWNveUGLPZBHD"
+        }
+      ];
+      const germon = [
+        {
+          title: "Ramazan Rəhmət ayıdır",
+          videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
+        },
+        {
+          title: "Ramazanın hikməti və fəziləti",
+          videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
+        },
+        {
+          title: "Nəfs təzkiyəsi",
+          videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
+        }
+      ];
+      
+    const [anchorElNav, setAnchorElNav] = useState(null);
     const [scrolled, setScrolled] = useState(false);
-    const navigate=useNavigate()
-    // Scroll hadisəsini dinləmək
+    const navigate = useNavigate();
+
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 50;
-            if (isScrolled !== scrolled) {
-                setScrolled(isScrolled);
-            }
+            setScrolled(window.scrollY > 50);
         };
         
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [scrolled]);
+    }, []);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -35,24 +61,22 @@ const HomeServices = () => {
 
     return (
         <>
-        <div className={`${style.Header1DDiv} ${scrolled ? style.scrolled : ''}`}>
-            <div className={style.Header2DDiv}>
-                <p className={style.Header1}>Xidmətlərimiz</p>
+        <header className={`${style.header} ${scrolled ? style.scrolled : ''}`}>
+            <div className={style.headerTop}>
+                <h1 className={style.headerTitle}>Xidmətlərimiz</h1>
             </div>
             
-            <div className={style.Header2DivNavfull}>
-                <div className={style.Header2DivNav}>
-                    <NavLink className={style.HeaderNavbar1} to={"/Qurani-Kərim"}>Qur'an-i Kərim</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/Qalereya"}>Cümə Xütbələrimiz</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/Əlaqə"}>Həftə İçi Söhbətlərimiz</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/"}>Hesabatlarımız</NavLink>
+            <nav className={style.navFull}>
+                <div className={style.navMain}>
+                    <NavLink className={style.navLink} to="/Qurani-Kərim">Qur'an-i Kərim</NavLink>
+                    <NavLink className={style.navLink} to="/Qalereya">Cümə Xütbələrimiz</NavLink>
+                    <NavLink className={style.navLink} to="/Əlaqə">Həftə İçi Söhbətlərimiz</NavLink>
+                    <NavLink className={style.navLink} to="/">Hesabatlarımız</NavLink>
                 </div>
-            </div>
+            </nav>
             
-            <div style={{display:"flex",justifyContent:"space-between"}}>
-                <div className={style.Header3DDiv}>
-                    <p className={style.Header11}>Xidmətlərimiz</p>
-                </div>
+            <div className={style.headerMobile}>
+                <h2 className={style.headerTitleMobile}>Xidmətlərimiz</h2>
                 
                 <div className={style.menu} style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
                     <div className={style.menu}>
@@ -68,7 +92,7 @@ const HomeServices = () => {
                         </IconButton>
                         
                         <Menu
-                            id="menu-appbar"
+                            id={style.menu}
                             anchorEl={anchorElNav}
                             anchorOrigin={{
                                 vertical: 'bottom',
@@ -84,30 +108,68 @@ const HomeServices = () => {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             <MenuItem key={"Navbar"} onClick={handleCloseNavMenu} sx={{display:"flex",flexDirection:"column"}}>
-                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/")}} style={{textDecoration:"none"}}>
-                                    <Typography sx={{ textAlign: 'center' }}>Qur'an-i Kərim</Typography>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Qurani-Kərim")}} style={{textDecoration:"none"}}>
+                                    <Typography sx={{ textAlign: 'center' }}>Qurani-Kərim</Typography>
                                 </Button>
                                 <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Qalereya")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Cümə Xütbələrimiz</Typography>
                                 </Button>
                                 <Button sx={{color:'#00f510'}} onClick={() =>{navigate("/Haqqımızda")}} style={{textDecoration:"none"}}>
-                                    <Typography sx={{ textAlign: 'center' }}>Həftə İçi Söhbətlərimiza</Typography>
+                    
+                                    <Typography sx={{ textAlign: 'center' }}>Həftə İçi Söhbətlərimiz</Typography>
                                 </Button>
                                 <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Əlaqə")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Hesabatlarımız</Typography>
                                 </Button>
-                               
                                 {/* Digər menyu elementləri */}
                             </MenuItem>
                         </Menu>
                     </div>
                 </div>
             </div>
-        </div>
-<div style={{marginTop:"300px"}}>
-Okey
-</div>
-</>
+        </header>
+
+        <div className={style.container}>
+      <h2 className={style.heading}>Cümə Xütbələri</h2>
+      <div className={style.grid}>
+        {sermons.map((sermon, index) => (
+          <div key={index} className={style.card}>
+            <div className={style.videoWrapper}>
+              <iframe
+                src={sermon.videoUrl}
+                title={sermon.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <p className={style.title}>{sermon.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <h2 className={style.YotubeCross}>Daha Çox....</h2>
+    <div className={style.container}>
+      <h2 className={style.heading}>Dini Dərslər</h2>
+      <div className={style.grid}>
+        {germon.map((germon, index) => (
+          <div key={index} className={style.card}>
+            <div className={style.videoWrapper}>
+              <iframe
+                src={germon.videoUrl}
+                title={germon.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <p className={style.title}>{germon.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <h2 className={style.YotubeCross}>Daha Çox....</h2>
+        </>
     );
 };
 

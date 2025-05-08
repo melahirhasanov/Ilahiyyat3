@@ -8,6 +8,7 @@ import AboutUs from './Pages/About/About'
 import ContactSection from './Pages/Contact/Contact'
 import HomeServices from './Pages/Servises/HomeServicess'
 import QuranPage from './Pages/QuranPdf/QuranPdf'
+import CumaDay from './Pages/CumaHutba/CumaHutba'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/Əlaqə' element={<ContactSection/>}/>
         <Route path='/Xidmətlərimiz' element={<HomeServices/>}/>
         <Route path='/Qurani-Kərim' element={<QuranPage/>}/>
+        <Route path='/Cuma-Xutba' element={<CumaDay/>}/>
 
         </Route>
 

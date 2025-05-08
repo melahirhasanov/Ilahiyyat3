@@ -10,8 +10,8 @@ import { FaPrayingHands } from 'react-icons/fa'; // Bu sətri əlavə edin
 import { FaMapMarkerAlt } from 'react-icons/fa'; // Bu sətri əlavə edin
 import { FaPhone } from 'react-icons/fa'; // Bu sətri əlavə edin
 import { FaEnvelope } from 'react-icons/fa'; // Bu sətri əlavə edin
-
 import {Grid, Navigation, Pagination, Autoplay} from "swiper/modules";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [prayerTimes, setPrayerTimes] = useState({
@@ -40,7 +40,7 @@ const Home = () => {
         
         return () => clearInterval(timer);
     }, []);
-
+const navigate=useNavigate()
     const updateCurrentDate = () => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const now = new Date();
@@ -304,7 +304,7 @@ const Home = () => {
             </div>
             <div className={style.Categories}>
                 <div className={style.CategoriesOne}><i id={style.Idss} className="fa-solid fa-book-open-reader"></i><h3 className={style.StilCategoriess}>Dini Dərslər</h3></div>
-                <div className={style.CategoriesTwo}><i id={style.Idss}  className="fa-solid fa-book-quran"></i><h3 className={style.StilCategoriess}>Qurani Kərim</h3></div>
+                <div onClick={()=>{navigate("/Qurani-Kərim")}} className={style.CategoriesTwo}><i id={style.Idss}  className="fa-solid fa-book-quran"></i><h3 className={style.StilCategoriess}>Qurani Kərim</h3></div>
                 <div className={style.CategoriesThree}><i id={style.Idsss} className="fa-solid fa-mosque"></i><h3 className={style.StilCategoriesss}>Xütbələr</h3></div>
             </div>
             <div className={style.contactSection}>
