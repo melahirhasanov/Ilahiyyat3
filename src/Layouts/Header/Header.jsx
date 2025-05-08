@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from "./Header.module.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [scrolled, setScrolled] = useState(false);
-    
+    const navigate=useNavigate()
     // Scroll hadisəsini dinləmək
     useEffect(() => {
         const handleScroll = () => {
@@ -42,10 +42,10 @@ const Header = () => {
             <div className={style.Header2DivNavfull}>
                 <div className={style.Header2DivNav}>
                     <NavLink className={style.HeaderNavbar1} to={"/"}>Ana Səhifə</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/"}>Qalereya</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/"}>Haqqımızda</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/"}>Əlaqə</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/"}>Faydalı Məlumatlar</NavLink>
+                    <NavLink className={style.HeaderNavbar1} to={"/Qalereya"}>Qalereya</NavLink>
+                    <NavLink className={style.HeaderNavbar1} to={"/Haqqımızda"}>Haqqımızda</NavLink>
+                    <NavLink className={style.HeaderNavbar1} to={"/Əlaqə"}>Əlaqə</NavLink>
+                    <NavLink className={style.HeaderNavbar1} to={"/Xidmətlərimiz"}>Xidmətlər</NavLink>
                 </div>
             </div>
             
@@ -84,20 +84,21 @@ const Header = () => {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             <MenuItem key={"Navbar"} onClick={handleCloseNavMenu} sx={{display:"flex",flexDirection:"column"}}>
-                                <Button sx={{color:'#00f510'}} onClick={() => {}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Ana Səhifə</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Qalereya")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Qalereya</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() =>{navigate("/Haqqımızda")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Haqqımızda</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Əlaqə")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Əlaqə</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {}} style={{textDecoration:"none"}}>
-                                    <Typography sx={{ textAlign: 'center' }}>Faydalı Məlumatlar</Typography>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Ximdətlərimiz")}
+                                } style={{textDecoration:"none"}}>
+                                    <Typography sx={{ textAlign: 'center' }}>Xidmətlər</Typography>
                                 </Button>
                                 {/* Digər menyu elementləri */}
                             </MenuItem>

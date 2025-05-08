@@ -303,7 +303,7 @@ const Home = () => {
                 </div>
             </div>
             <div className={style.Categories}>
-                <div className={style.CategoriesOne}><i id={style.Ids} className="fa-solid fa-person-praying"></i><h3 className={style.StilCategories}>Namaz</h3></div>
+                <div className={style.CategoriesOne}><i id={style.Idss} className="fa-solid fa-book-open-reader"></i><h3 className={style.StilCategoriess}>Dini Dərslər</h3></div>
                 <div className={style.CategoriesTwo}><i id={style.Idss}  className="fa-solid fa-book-quran"></i><h3 className={style.StilCategoriess}>Qurani Kərim</h3></div>
                 <div className={style.CategoriesThree}><i id={style.Idsss} className="fa-solid fa-mosque"></i><h3 className={style.StilCategoriesss}>Xütbələr</h3></div>
             </div>

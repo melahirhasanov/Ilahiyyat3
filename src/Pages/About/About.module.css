@@ -1,0 +1,120 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 100px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+  }
+  
+  .title::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(to right, #8e44ad, #3498db);
+    bottom: -10px;
+    left: 25%;
+    border-radius: 2px;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .imageContainer:hover {
+    transform: translateY(-5px);
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .imageContainer:hover .image {
+    transform: scale(1.03);
+  }
+  
+  .textContainer {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  .highlight {
+    color: #2980b9;
+    font-weight: 600;
+  }
+  
+  .imam {
+    font-style: italic;
+    color: #8e44ad;
+    font-weight: 500;
+    margin-top: 20px;
+    border-left: 3px solid #3498db;
+    padding-left: 15px;
+  }
+  
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .feature {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+    }
+    
+    .title {
+      font-size: 2rem;
+    }
+    
+    .text {
+      font-size: 1rem;
+    }
+  }

@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0);
     padding: 10px;
 
@@ -13,7 +12,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0);
 
 }
@@ -23,14 +21,12 @@
 .Header1{
     font-size: 35px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 10px;
     color: rgb(250, 253, 255);
     
 }
 .Header11{
     font-size: 35px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 10px;
     color: rgb(240, 240, 240);
 }
 .Header2{
@@ -79,7 +75,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
   }
   
   .Header3DDiv {
@@ -89,7 +84,6 @@
   .Header1, .Header11 {
     font-size: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 10px;
     color: rgb(255, 255, 255);
   }
   
@@ -167,7 +161,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
   }
   
   .Header3DDiv {
@@ -177,7 +170,6 @@
   .Header1, .Header11 {
     font-size: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 10px;
     color: rgb(0, 255, 115);
   }
   
