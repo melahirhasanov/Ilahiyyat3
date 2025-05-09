@@ -69,9 +69,9 @@ const HomeServices = () => {
             <nav className={style.navFull}>
                 <div className={style.navMain}>
                     <NavLink className={style.navLink} to="/Qurani-Kərim">Qur'an-i Kərim</NavLink>
-                    <NavLink className={style.navLink} to="/Qalereya">Cümə Xütbələrimiz</NavLink>
-                    <NavLink className={style.navLink} to="/Əlaqə">Həftə İçi Söhbətlərimiz</NavLink>
-                    <NavLink className={style.navLink} to="/">Hesabatlarımız</NavLink>
+                    <NavLink className={style.navLink} to="/Cuma-Xutba">Cümə Xütbələrimiz</NavLink>
+                    <NavLink className={style.navLink} to="/Həftə-Söhbətləri">Həftə İçi Söhbətlərimiz</NavLink>
+                    <NavLink className={style.navLink} to="/Aylıq-Hesabat">Hesabatlarımız</NavLink>
                 </div>
             </nav>
             
@@ -111,14 +111,14 @@ const HomeServices = () => {
                                 <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Qurani-Kərim")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Qurani-Kərim</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Qalereya")}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Cuma-Xutba")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Cümə Xütbələrimiz</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() =>{navigate("/Haqqımızda")}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() =>{navigate("/Həftə-Söhbətləri")}} style={{textDecoration:"none"}}>
                     
                                     <Typography sx={{ textAlign: 'center' }}>Həftə İçi Söhbətlərimiz</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Əlaqə")}} style={{textDecoration:"none"}}>
+                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Aylıq-Hesabat")}} style={{textDecoration:"none"}}>
                                     <Typography sx={{ textAlign: 'center' }}>Hesabatlarımız</Typography>
                                 </Button>
                                 {/* Digər menyu elementləri */}
@@ -148,7 +148,7 @@ const HomeServices = () => {
         ))}
       </div>
     </div>
-    <h2 className={style.YotubeCross}>Daha Çox....</h2>
+    <h2 onClick={()=>{navigate("/Cuma-Xutba")}} className={style.YotubeCross}>Daha Çox....</h2>
     <div className={style.container}>
       <h2 className={style.heading}>Dini Dərslər</h2>
       <div className={style.grid}>
@@ -165,10 +165,12 @@ const HomeServices = () => {
             </div>
             <p className={style.title}>{germon.title}</p>
           </div>
+          
         ))}
       </div>
+      <h2 onClick={()=>{navigate("/Həftə-Söhbətləri")}} className={style.YotubeCross}>Daha Çox....</h2>
+
     </div>
-    <h2 className={style.YotubeCross}>Daha Çox....</h2>
         </>
     );
 };

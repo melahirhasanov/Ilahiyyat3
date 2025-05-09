@@ -141,7 +141,8 @@
     margin: auto;
     text-align: center;
   }
-  /* Header styles */
+
+/* Header styles */
 .header {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -215,6 +216,9 @@
     
     .headerMobile {
         display: flex;
+    }
+    .headerTitle{
+        display: none;
     }
 }
 
@@ -305,3 +309,4 @@
     margin: auto;
     text-align: center;
 }
+  

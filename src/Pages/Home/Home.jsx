@@ -231,7 +231,7 @@ const navigate=useNavigate()
                         <h1 className={style.voucherSwipe10} style={{color:"orange",backgroundColor:"rgba(255,255,255,0.7)",borderRadius:"20px",padding:"10px"}}>
                             Məscidimizdə Qur'an təlimi mövcuddur.
                         </h1>
-                        <button className={style.baton10}>Daha çox...</button>
+                        <button onClick={()=>{navigate('/Quran-Təlimi')}} className={style.baton10}>Daha çox...</button>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
@@ -303,9 +303,9 @@ const navigate=useNavigate()
                 </div>
             </div>
             <div className={style.Categories}>
-                <div className={style.CategoriesOne}><i id={style.Idss} className="fa-solid fa-book-open-reader"></i><h3 className={style.StilCategoriess}>Dini Dərslər</h3></div>
+                <div onClick={()=>{navigate("/Həftə-Söhbətləri")}} className={style.CategoriesOne}><i id={style.Idss} className="fa-solid fa-book-open-reader"></i><h3 className={style.StilCategoriess}>Dini Dərslər</h3></div>
                 <div onClick={()=>{navigate("/Qurani-Kərim")}} className={style.CategoriesTwo}><i id={style.Idss}  className="fa-solid fa-book-quran"></i><h3 className={style.StilCategoriess}>Qurani Kərim</h3></div>
-                <div className={style.CategoriesThree}><i id={style.Idsss} className="fa-solid fa-mosque"></i><h3 className={style.StilCategoriesss}>Xütbələr</h3></div>
+                <div onClick={()=>{navigate("/Cuma-Xutba")}} className={style.CategoriesThree}><i id={style.Idsss} className="fa-solid fa-mosque"></i><h3 className={style.StilCategoriesss}>Xütbələr</h3></div>
             </div>
             <div className={style.contactSection}>
       <h2 className={style.sectionHeader}>

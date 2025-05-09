@@ -1,0 +1,258 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    margin-top: 100px;
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .header p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  .hero {
+    background: linear-gradient(135deg, #1e5799, #2989d8);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .heroContent {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+  }
+  
+  .heroContent h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .heroContent p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Qalan CSS kodları eyni qalır... */
+  .scheduleSection {
+    margin: 60px 20px;
+  }
+  
+  .scheduleSection h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .scheduleGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .scheduleCard {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-top: 5px solid #3498db;
+  }
+  
+  .scheduleCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .scheduleCard h3 {
+    color: #3498db;
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+  }
+  
+  .time {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2c3e50;
+  }
+  
+  .group {
+    color: #7f8c8d;
+    margin: 10px 0;
+  }
+  
+  .icon {
+    font-size: 2rem;
+    margin-top: 15px;
+    color: #3498db;
+  }
+  
+  .teachersSection {
+    margin: 60px 20px;
+  }
+  
+  .teachersSection h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .teacherCategory {
+    margin-bottom: 50px;
+  }
+  
+  .teacherCategory h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .teachersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .teacherCard {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .teacherCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .teacherIcon {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    margin-bottom: 15px;
+  }
+  
+  .teacherCard h4 {
+    margin: 0 0 10px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+  }
+  
+  .teacherCard p {
+    margin: 8px 0;
+    color: #7f8c8d;
+  }
+  
+  .teacherCard strong {
+    color: #2c3e50;
+  }
+  
+  .mealSection {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    margin: 60px 0;
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+  
+  .mealContent {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .mealText {
+    flex: 1;
+  }
+  
+  .mealText h2 {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 0;
+  }
+  
+  .mealText p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .mealImage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mealIcon {
+    font-size: 8rem;
+    opacity: 0.8;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f5f7fa;
+    margin-top: 60px;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+    color: #7f8c8d;
+  }
+  
+  @media (max-width: 768px) {
+    .heroContent h2 {
+      font-size: 2rem;
+    }
+    
+    .mealContent {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .mealText h2 {
+      justify-content: center;
+    }
+  }

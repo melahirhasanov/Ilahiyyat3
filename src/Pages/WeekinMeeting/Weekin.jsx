@@ -1,76 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import style from "./CumaHutba.module.css";
+import style from "./Weekin.module.css";
 import { NavLink, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-const CumaDay = () => {
-    const sermons = [
+import MenuItem from '@mui/material/MenuItem'
+const Weekin = () => {
+   
+      const germon = [
         {
           title: "Ramazan Rəhmət ayıdır",
-          videoUrl: "https://www.youtube.com/embed/C_IZ25SxiN8?si=sRpsp_7ZNQ-mGxbC"
+          videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
         },
         {
           title: "Ramazanın hikməti və fəziləti",
-          videoUrl: "https://www.youtube.com/embed/yCrWUe4PJU4?si=yJ5y0COXxFoK55gO"
+          videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
         },
         {
           title: "Nəfs təzkiyəsi",
-          videoUrl: "https://www.youtube.com/embed/awpL6v9nnUM?si=ShIZWNveUGLPZBHD"
+          videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
         },
         {
             title: "Ramazan Rəhmət ayıdır",
-            videoUrl: "https://www.youtube.com/embed/C_IZ25SxiN8?si=sRpsp_7ZNQ-mGxbC"
+            videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
           },
           {
             title: "Ramazanın hikməti və fəziləti",
-            videoUrl: "https://www.youtube.com/embed/yCrWUe4PJU4?si=yJ5y0COXxFoK55gO"
+            videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
           },
           {
             title: "Nəfs təzkiyəsi",
-            videoUrl: "https://www.youtube.com/embed/awpL6v9nnUM?si=ShIZWNveUGLPZBHD"
+            videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
           },
           {
             title: "Ramazan Rəhmət ayıdır",
-            videoUrl: "https://www.youtube.com/embed/C_IZ25SxiN8?si=sRpsp_7ZNQ-mGxbC"
+            videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
           },
           {
             title: "Ramazanın hikməti və fəziləti",
-            videoUrl: "https://www.youtube.com/embed/yCrWUe4PJU4?si=yJ5y0COXxFoK55gO"
+            videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
           },
           {
             title: "Nəfs təzkiyəsi",
-            videoUrl: "https://www.youtube.com/embed/awpL6v9nnUM?si=ShIZWNveUGLPZBHD"
-          }
-          ,{
+            videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
+          },
+          {
             title: "Ramazan Rəhmət ayıdır",
-            videoUrl: "https://www.youtube.com/embed/C_IZ25SxiN8?si=sRpsp_7ZNQ-mGxbC"
+            videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
           },
           {
             title: "Ramazanın hikməti və fəziləti",
-            videoUrl: "https://www.youtube.com/embed/yCrWUe4PJU4?si=yJ5y0COXxFoK55gO"
+            videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
           },
           {
             title: "Nəfs təzkiyəsi",
-            videoUrl: "https://www.youtube.com/embed/awpL6v9nnUM?si=ShIZWNveUGLPZBHD"
-          }
-          ,{
+            videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
+          },
+          {
             title: "Ramazan Rəhmət ayıdır",
-            videoUrl: "https://www.youtube.com/embed/C_IZ25SxiN8?si=sRpsp_7ZNQ-mGxbC"
+            videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
           },
           {
             title: "Ramazanın hikməti və fəziləti",
-            videoUrl: "https://www.youtube.com/embed/yCrWUe4PJU4?si=yJ5y0COXxFoK55gO"
+            videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
           },
           {
             title: "Nəfs təzkiyəsi",
-            videoUrl: "https://www.youtube.com/embed/awpL6v9nnUM?si=ShIZWNveUGLPZBHD"
+            videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
+          },{
+            title: "Ramazan Rəhmət ayıdır",
+            videoUrl: "https://www.youtube.com/embed/tzcnH9eyolI?si=RudFicLBDLTpNLnI"
+          },
+          {
+            title: "Ramazanın hikməti və fəziləti",
+            videoUrl: "https://www.youtube.com/embed/Xjm_H3mwBE4?si=hiLF6ve7KvJ8tRn0"
+          },
+          {
+            title: "Nəfs təzkiyəsi",
+            videoUrl: "https://www.youtube.com/embed/Rf-UaPiIyXs?si=LpAftaw313sUvn8l"
           }
       ];
-     
       
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [scrolled, setScrolled] = useState(false);
@@ -126,7 +137,7 @@ const CumaDay = () => {
                         </IconButton>
                         
                         <Menu
-                            id="menu-appbar"
+                            id={style.menu}
                             anchorEl={anchorElNav}
                             anchorOrigin={{
                                 vertical: 'bottom',
@@ -163,28 +174,28 @@ const CumaDay = () => {
             </div>
         </header>
 
-        <div className={style.container}>
-      <h2 className={style.heading}>Cümə Xütbələri</h2>
+       
+    <div className={style.container}>
+      <h2 className={style.heading}>Dini Dərslər</h2>
       <div className={style.grid}>
-        {sermons.map((sermon, index) => (
+        {germon.map((germon, index) => (
           <div key={index} className={style.card}>
             <div className={style.videoWrapper}>
               <iframe
-                src={sermon.videoUrl}
-                title={sermon.title}
+                src={germon.videoUrl}
+                title={germon.title}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
-            <p className={style.title}>{sermon.title}</p>
+            <p className={style.title}>{germon.title}</p>
           </div>
         ))}
       </div>
     </div>
-   
         </>
     );
 };
 
-export default CumaDay;
+export default Weekin;
