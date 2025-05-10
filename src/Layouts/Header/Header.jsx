@@ -36,22 +36,22 @@ const Header = () => {
     return (
         <div className={`${style.Header1DDiv} ${scrolled ? style.scrolled : ''}`}>
             <div className={style.Header2DDiv}>
-                <p className={style.Header1}>Ilahiyyat Məscidi</p>
+                <p className={style.Header1}>İlahiyyat Məscidi</p>
             </div>
             
             <div className={style.Header2DivNavfull}>
                 <div className={style.Header2DivNav}>
-                    <NavLink className={style.HeaderNavbar1} to={"/"}>Ana Səhifə</NavLink>
+                    <b><NavLink className={style.HeaderNavbar1} to={"/"}>Ana Səhifə</NavLink>
                     <NavLink className={style.HeaderNavbar1} to={"/Qalereya"}>Qalereya</NavLink>
                     <NavLink className={style.HeaderNavbar1} to={"/Haqqımızda"}>Haqqımızda</NavLink>
                     <NavLink className={style.HeaderNavbar1} to={"/Əlaqə"}>Əlaqə</NavLink>
-                    <NavLink className={style.HeaderNavbar1} to={"/Xidmətlərimiz"}>Xidmətlər</NavLink>
+                    <NavLink className={style.HeaderNavbar1} to={"/Xidmətlərimiz"}>Xidmətlər</NavLink></b>
                 </div>
             </div>
             
             <div style={{display:"flex",justifyContent:"space-between"}}>
                 <div className={style.Header3DDiv}>
-                    <p className={style.Header11}>Ilahiyyat Məscidi</p>
+                    <p className={style.Header11}>İlahiyyat Məscidi</p>
                 </div>
                 
                 <div className={style.menu} style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>

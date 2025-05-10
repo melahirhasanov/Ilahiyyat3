@@ -83,7 +83,7 @@
   
   .Header1, .Header11 {
     font-size: 35px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(255, 255, 255);
   }
   
@@ -140,7 +140,7 @@
 
   }
   .Header1DDiv {
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(255, 255, 255, 0.87);
     position: fixed; /* Headeri səhifənin yuxarısında sabitləyir */
     top: 0;
     left: 0;
@@ -169,7 +169,7 @@
   
   .Header1, .Header11 {
     font-size: 35px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif;
     color: rgb(0, 255, 115);
   }
   
@@ -190,7 +190,7 @@
     color: rgb(31, 244, 70);
     padding: 10px 15px;
     transition: all 0.3s ease;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif;
 
   }
   
@@ -225,7 +225,7 @@
     
     .Header11 {
       font-size: 23px;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;;
+      font-family: 'Times New Roman', Times, serif;
     }
     .Header1DDiv{
         display: block!important;

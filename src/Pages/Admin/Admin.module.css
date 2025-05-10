@@ -1,0 +1,389 @@
+/* Admin.module.css */
+
+.adminContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    margin-top: 100px;
+  }
+  
+  /* Header Styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e1e5eb;
+  }
+  
+  .title {
+    color: #2b2d42;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #4361ee, #3a0ca3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .filterContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .filterLabel {
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+  
+  .filterSelect, .statusSelect {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2d3748;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filterSelect:hover, .statusSelect:hover {
+    background-color: #edf2f7;
+  }
+  
+  .filterSelect:focus, .statusSelect:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  }
+  
+  /* Main Content Styles */
+  .mainContent {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 1.5rem;
+  }
+  
+  /* Loading State */
+  .loadingState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 4rem 0;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(67, 97, 238, 0.2);
+    border-left-color: #4361ee;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .loadingState p {
+    color: #4a5568;
+    font-weight: 500;
+  }
+  
+  /* Error State */
+  .errorState {
+    background-color: #fff5f5;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #e53e3e;
+    border: 1px solid #fed7d7;
+  }
+  
+  .errorState p {
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .retryButton {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(67, 97, 238, 0.1);
+  }
+  
+  .retryButton:hover {
+    background-color: #3a56d0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(67, 97, 238, 0.15);
+  }
+  
+  /* Empty State */
+  .emptyState {
+    text-align: center;
+    padding: 4rem 0;
+  }
+  
+  .emptyState p {
+    color: #a0aec0;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  /* Messages List */
+  .messagesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Message Card */
+  .messageCard {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #a0aec0;
+  }
+  
+  .messageCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Status Colors */
+  .messageCard.pending {
+    border-left-color: #ef4444;
+  }
+  
+  .messageCard.reviewed {
+    border-left-color: #3b82f6;
+  }
+  
+  .messageCard.resolved {
+    border-left-color: #10b981;
+  }
+  
+  .messageCard.rejected {
+    border-left-color: #f59e0b;
+  }
+  
+  /* Card Header */
+  .cardHeader {
+    padding: 1.25rem;
+    background-color: white;
+    border-bottom: 1px solid #edf2f7;
+  }
+  
+  .senderName {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  .metaInfo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #718096;
+  }
+  
+  .senderEmail {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .messageDate {
+    font-size: 0.8rem;
+    color: #a0aec0;
+  }
+  
+  /* Card Body */
+  .cardBody {
+    padding: 1.25rem;
+    flex-grow: 1;
+  }
+  
+  .contactInfo {
+    margin-bottom: 1.25rem;
+  }
+  
+  .contactInfo p {
+    margin: 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+  
+  .statusControl {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .statusControl label {
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+  
+  .messageContent {
+    margin-top: 1.25rem;
+  }
+  
+  .messageContent p {
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+  
+  .messageText {
+    background-color: #f8fafc;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    color: #4a5568;
+    font-size: 0.9rem;
+    border: 1px solid #edf2f7;
+  }
+  
+  /* Card Footer */
+  .cardFooter {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #edf2f7;
+    text-align: right;
+    background-color: #f8fafc;
+  }
+  
+  .deleteButton {
+    padding: 0.5rem 1.25rem;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .deleteButton:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.1);
+  }
+  
+  .deleteButton::before {
+    content: "🗑️";
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 850px) {
+    .adminContainer {
+      padding: 1rem;
+    }
+    
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+    
+    .filterContainer {
+      width: 90%;
+    }
+    
+    .messagesList {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Animation for new messages */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .messageCard {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  .logoutButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: #f8f9fa;
+    color: #e63946;
+    border: 1px solid #e63946;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0px;
+  }
+  
+  .logoutButton:hover {
+    background-color: #e63946;
+    color: white;
+    box-shadow: 0 4px 6px rgba(230, 57, 70, 0.1);
+  }
+  
+  .logoutButton svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .logoutButton:hover svg {
+    transform: translateX(3px);
+    stroke: white;
+  }
+  
+  /* Responsivlik üçün */
+  @media (max-width: 850px) {
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+    }
+    
+    .headerLeft {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .logoutButton {
+      width: 100%;
+      justify-content: center;
+    }
+  }

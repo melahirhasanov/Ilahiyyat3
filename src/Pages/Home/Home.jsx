@@ -12,6 +12,7 @@ import { FaPhone } from 'react-icons/fa'; // Bu sətri əlavə edin
 import { FaEnvelope } from 'react-icons/fa'; // Bu sətri əlavə edin
 import {Grid, Navigation, Pagination, Autoplay} from "swiper/modules";
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid'; // UUID kitabxanası quraşdırmaq lazımdır: npm install uuid
 
 const Home = () => {
     const [prayerTimes, setPrayerTimes] = useState({
@@ -172,38 +173,81 @@ const navigate=useNavigate()
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         message: ''
       });
-    
       const [isSubmitting, setIsSubmitting] = useState(false);
-      const [submitStatus, setSubmitStatus] = useState(null);
+      const [submitStatus, setSubmitStatus] = useState('');
     
       const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { id, value } = e.target;
         setFormData(prev => ({
           ...prev,
-          [name]: value
+          [id]: value
         }));
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        
-        // Burada form məlumatlarını göndərə bilərsiniz
-        console.log('Form göndərildi:', formData);
-        
-        // Simulyasiya üçün setTimeout
-        setTimeout(() => {
-          setIsSubmitting(false);
+        setSubmitStatus('');
+    
+        try {
+          const binId = '681e8f438561e97a5010d168';
+          const apiKey = '$2a$10$TirNs59Qi3Qh3dKcRHAqh.TSvGR3IaH72vYPOM9AYWc0Bo/iJZawC';
+          const apiUrl = `https://api.jsonbin.io/v3/b/${binId}`;
+    
+          // Unikal ID yaradırıq
+          const messageId = uuidv4();
+    
+          const newMessage = {
+            id: messageId, // Unikal ID əlavə edirik
+            Name: formData.name,
+            Email: formData.email,
+            Phone: formData.phone,
+            YourMessage: formData.message,
+            Status: "Baxılmayıb",
+            CreatedAt: new Date().toISOString()
+          };
+    
+          const response = await fetch(apiUrl, {
+            headers: {
+              'X-Master-Key': apiKey,
+              'Content-Type': 'application/json'
+            }
+          });
+    
+          if (!response.ok) throw new Error('Məlumat oxunarkən xəta baş verdi');
+    
+          const binData = await response.json();
+          const existingMessages = binData.record?.Messages || [];
+    
+          const updatedData = {
+            Messages: [...existingMessages, newMessage]
+          };
+    
+          const updateResponse = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+              'X-Master-Key': apiKey,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+          });
+    
+          if (!updateResponse.ok) throw new Error('Məlumat yazılarkən xəta baş verdi');
+    
           setSubmitStatus('success');
-          setFormData({ name: '', email: '', message: '' });
-          
-          // 5 saniyədən sonra statusu sıfırla
-          setTimeout(() => setSubmitStatus(null), 5000);
-        }, 1500);
+          setFormData({ name: '', email: '', phone: '', message: '' });
+        } catch (error) {
+          console.error('Xəta:', error);
+          setSubmitStatus('error');
+        } finally {
+          setIsSubmitting(false);
+        }
       };
-
+    
+   
     return (
         <>
             <Swiper 
@@ -360,54 +404,73 @@ const navigate=useNavigate()
         
         {/* Əlaqə formu */}
         <div className={style.contactFormWrapper}>
-          <form className={style.contactForm}>
-            <h3 className={style.formTitle}>Mesaj Göndər</h3>
-            
-            <div className={style.formGroup}>
-              <input 
-                type="text" 
-                id="name" 
-                placeholder="Adınız" 
-                className={style.formInput}
-                required
-              />
-            </div>
-            
-            <div className={style.formGroup}>
-              <input 
-                type="email" 
-                id="email" 
-                placeholder="Email ünvanınız" 
-                className={style.formInput}
-                required
-              />
-            </div>
-            
-            <div className={style.formGroup}>
-              <input 
-                type="tel" 
-                id="phone" 
-                placeholder="Telefon nömrəniz" 
-                className={style.formInput}
-              />
-            </div>
-            
-            <div className={style.formGroup}>
-              <textarea 
-                id="message" 
-                rows="5" 
-                placeholder="Mesajınız..." 
-                className={style.formTextarea}
-                required
-                style={{resize:"none"}}
-              ></textarea>
-            </div>
-            
-            <button type="submit" className={style.submitButton}>
-              Mesajı Göndər
-            </button>
-          </form>
+      <form className={style.contactForm} onSubmit={handleSubmit}>
+        <h3 className={style.formTitle}>Mesaj Göndər</h3>
+        
+        <div className={style.formGroup}>
+          <input 
+            type="text" 
+            id="name" 
+            placeholder="Adınız" 
+            className={style.formInput}
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
+        
+        <div className={style.formGroup}>
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="Email ünvanınız" 
+            className={style.formInput}
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        
+        <div className={style.formGroup}>
+          <input 
+            type="tel" 
+            id="phone" 
+            placeholder="Telefon nömrəniz" 
+            className={style.formInput}
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+        
+        <div className={style.formGroup}>
+          <textarea 
+            id="message" 
+            rows="5" 
+            placeholder="Mesajınız..." 
+            className={style.formTextarea}
+            value={formData.message}
+            onChange={handleChange}
+            required
+            style={{resize:"none"}}
+          ></textarea>
+        </div>
+        
+        <button 
+          type="submit" 
+          className={style.submitButton}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Göndərilir...' : 'Mesajı Göndər'}
+        </button>
+
+        {submitStatus === 'success' && (
+          <p className={style.successMessage}>Mesajınız uğurla göndərildi!</p>
+        )}
+        {submitStatus === 'error' && (
+          <p className={style.errorMessage}>Göndərilmə zamanı xəta baş verdi. Yenidən cəhd edin.</p>
+        )}
+      </form>
+    </div>
       </div>
     </div>
         </>

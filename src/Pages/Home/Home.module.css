@@ -584,4 +584,13 @@ color: aliceblue;
 .contactFormWrapper {
   animation-delay: 0.2s;
 }
-  
+@media (max-width: 700px) and (min-width: 600px) {
+  .voucherSwipe10 {
+    margin-top: 100px; /* və ya istədiyiniz digər stil */
+  }
+}
+  @media (min-width: 1600px) {
+    .voucherSwipe10{
+      margin-top: 400px;
+    }
+  }

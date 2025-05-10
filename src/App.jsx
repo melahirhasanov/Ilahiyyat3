@@ -1,5 +1,5 @@
 
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Layouts from './Layouts/MainLayouts/Layouts'
 import Home from './Pages/Home/Home'
@@ -12,9 +12,15 @@ import CumaDay from './Pages/CumaHutba/CumaHutba'
 import Weekin from './Pages/WeekinMeeting/Weekin'
 import Cost from './Pages/Cost/Cost'
 import QuranLearning from './Pages/QuranLearn/QuranLearn'
+import NotFound from './Pages/NoteFound/NotFound'
+import AdminDashboard from './Pages/Admin/Admin'
+import AdminLogin from './Pages/Admin/AdminLogin'
 
 function App() {
-
+  const AdminRoute = () => {
+    const isAdmin = localStorage.getItem('userRole') === 'admin';
+    return isAdmin ? <Outlet/> : <Navigate to="/mescidvideosu" replace />;
+  };
   return (
     <>
       <Routes>
@@ -28,8 +34,12 @@ function App() {
         <Route path='/Cuma-Xutba' element={<CumaDay/>}/>
         <Route path='/Həftə-Söhbətləri' element={<Weekin/>}/>
         <Route path='/Aylıq-Hesabat' element={<Cost/>}/>
-        <Route path='/Quran-Təlimi' element={<QuranLearning/>}/>
+        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/mescidvideosu' element={<AdminLogin/>}/>
 
+        <Route element={<AdminRoute />}>
+          <Route path="/mescidsekli" element={<AdminDashboard />} />
+        </Route>
         </Route>
 
       </Routes>
