@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import style from "./Home.module.css";
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
@@ -13,7 +12,8 @@ import { FaEnvelope } from 'react-icons/fa'; // Bu sətri əlavə edin
 import {Grid, Navigation, Pagination, Autoplay} from "swiper/modules";
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid'; // UUID kitabxanası quraşdırmaq lazımdır: npm install uuid
-
+import { useState } from "react";
+import { useEffect } from "react";
 const Home = () => {
     const [prayerTimes, setPrayerTimes] = useState({
         fajr: '--',

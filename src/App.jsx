@@ -36,6 +36,7 @@ function App() {
         <Route path='/Aylıq-Hesabat' element={<Cost/>}/>
         <Route path='/*' element={<NotFound/>}/>
         <Route path='/mescidvideosu' element={<AdminLogin/>}/>
+        <Route path='/Quran-Təlimi' element={<QuranLearning/>}/>
 
         <Route element={<AdminRoute />}>
           <Route path="/mescidsekli" element={<AdminDashboard />} />

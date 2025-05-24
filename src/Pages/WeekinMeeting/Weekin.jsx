@@ -116,7 +116,6 @@ const Weekin = () => {
                     <NavLink className={style.navLink} to="/Qurani-Kərim">Qur'an-i Kərim</NavLink>
                     <NavLink className={style.navLink} to="/Cuma-Xutba">Cümə Xütbələrimiz</NavLink>
                     <NavLink className={style.navLink} to="/Həftə-Söhbətləri">Həftə İçi Söhbətlərimiz</NavLink>
-                    <NavLink className={style.navLink} to="/Aylıq-Hesabat">Hesabatlarımız</NavLink>
                 </div>
             </nav>
             
@@ -163,9 +162,7 @@ const Weekin = () => {
                     
                                     <Typography sx={{ textAlign: 'center' }}>Həftə İçi Söhbətlərimiz</Typography>
                                 </Button>
-                                <Button sx={{color:'#00f510'}} onClick={() => {navigate("/Aylıq-Hesabat")}} style={{textDecoration:"none"}}>
-                                    <Typography sx={{ textAlign: 'center' }}>Hesabatlarımız</Typography>
-                                </Button>
+                       
                                 {/* Digər menyu elementləri */}
                             </MenuItem>
                         </Menu>
