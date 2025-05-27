@@ -7,16 +7,7 @@ import { MdFamilyRestroom } from 'react-icons/md';
 const QuranLearning = () => {
   const teachers = {
     female: [
-<<<<<<< HEAD
-      { name: "Xanım Zəhra", specialty: "Əlifba & Təcvid", experience: "5 il" },
-      { name: "Xanım Ayşə", specialty: "Hifz proqramı", experience: "7 il" },
-      { name: "Xanım Fatimə", specialty: "Təfsir dərsləri", experience: "10 il" }
-    ],
-    male: [
-      { name: "Vüqar", specialty: "Əlifba & Qiraət", experience: "18 il" },
-      { name: "Əhməd", specialty: "Təcvid & Hifz", experience: "15 il" },
-      { name: "Xanlar", specialty: "Təcvid & Hifz", experience: "9 il" },
-=======
+
       { name: "Inci Rüstəmova", specialty: "Təfsir dərsləri,Quran,Hədis" },
       { name: "Rəsulzadə Nərgiz", specialty: "Siyər,Fiqh,Quran"  },
       { name: "Məmişova Aydan", specialty: "Təfsir dərsləri,Quran,Siyər" }
@@ -25,20 +16,15 @@ const QuranLearning = () => {
       { name: "Vüqar Səmədov", specialty: "Əlifba & Qiraət,Dini bilgilər" },
       { name: "Seyidov Ağalar", specialty: "Təcvid & Hifz,Dini bilgilər" },
       { name: "Məzahir Məhərrəmov", specialty: "Təcvid,Hifz,Dini bilgilər" },
->>>>>>> ccc0f85 (İlahi layihənin ilk commit-i)
+
     ]
   };
 
   const schedule = [
-<<<<<<< HEAD
-    { day: "Şənbə", time: "10:00-12:00", group: "Uşaqlar (7-12 yaş)" },
-    { day: "Şənbə", time: "14:00-16:00", group: "Gənclər (13-18 yaş)" },
-    { day: "Bazar", time: "10:00-12:00", group: "Qadınlar" },
-    { day: "Bazar", time: "14:00-16:00", group: "Kişilər" }
-=======
+
     { day: "Hər gün(Cümə günü istisna olmaqla)", time: "Quran dərsləri", group: "Qadınlar" },
     { day: "Hər gün(Cümə günü istisna olmaqla)", time: "Quran dərsləri", group: "Kişilər" }
->>>>>>> ccc0f85 (İlahi layihənin ilk commit-i)
+
   ];
 
   return (
@@ -53,13 +39,9 @@ const QuranLearning = () => {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h2>Quranı düzgün oxumağı öyrənin!</h2>
-<<<<<<< HEAD
-          <p>Həftənin 6-7-ci günləri Quran dərslərimiz və xüsusi yemək proqramımız var</p>
-          <p>Sizdə TəlimlərimizƏ Qoşularaq Qur'an Oxumağı Öyrənə bilərsiniz</p>
-=======
+
           <p>Həftənin 6 günü quran dərslərimiz(Cümə günü istisna olmaqla), şənbə və bazar günləri övladlarınız üçün xüsusi yemək programı</p>
           <p>Sizdə Təlimlərimizə Qoşularaq Qur'an Oxumağı Öyrənə bilərsiniz</p>
->>>>>>> ccc0f85 (İlahi layihənin ilk commit-i)
           <p>Gecikmə Tam Vaxtıdır</p>
           <p>Müraciət və daha ətraflı Məlumat üçün : 051-590-14-24</p>
         </div>
@@ -92,11 +74,8 @@ const QuranLearning = () => {
                 <div className={styles.teacherIcon}><GiTeacher /></div>
                 <h4>{teacher.name}</h4>
                 <p><strong>İxtisas:</strong> {teacher.specialty}</p>
-<<<<<<< HEAD
-                <p><strong>Təcrübə:</strong> {teacher.experience}</p>
-=======
-              
->>>>>>> ccc0f85 (İlahi layihənin ilk commit-i)
+
+
               </div>
             ))}
           </div>
@@ -110,11 +89,7 @@ const QuranLearning = () => {
                 <div className={styles.teacherIcon}><GiTeacher /></div>
                 <h4>{teacher.name}</h4>
                 <p><strong>İxtisas:</strong> {teacher.specialty}</p>
-<<<<<<< HEAD
-                <p><strong>Təcrübə:</strong> {teacher.experience}</p>
-=======
-                
->>>>>>> ccc0f85 (İlahi layihənin ilk commit-i)
+
               </div>
             ))}
           </div>
