@@ -387,3 +387,28 @@
       justify-content: center;
     }
   }
+  /* Admin.module.css faylına əlavə edin */
+
+.messageContent {
+    margin-top: 1.25rem;
+    min-height: 100px; /* Minimum hündürlük təyin edirik */
+    display: flex;
+    flex-direction: column;
+}
+
+.messageText {
+    background-color: #f8fafc;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    color: #4a5568;
+    font-size: 0.9rem;
+    border: 1px solid #edf2f7;
+    white-space: pre-wrap; /* Mətndəki boşluqları və yeni sətirləri qoruyur */
+    word-wrap: break-word; /* Uzun sözləri sındırır */
+    overflow: auto; /* Həddindən artıq mətn üçün scroll əlavə edir */
+    flex-grow: 1; /* Bütün boş yeri tutması üçün */
+    min-height: 60px; /* Minimum hündürlük */
+    max-height: 200px; /* Maksimum hündürlük */
+}

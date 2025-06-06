@@ -133,7 +133,7 @@ const ContactSection = () => {
                 <FaPhone className={styles.infoIcon} />
                 <div>
                   <p className={styles.infoLabel}>Telefon:</p>
-                  <p className={styles.infoText}>+994 12 345 67 89</p>
+                  <p className={styles.infoText}>+994 55  322  67 63</p>
                 </div>
               </div>
               

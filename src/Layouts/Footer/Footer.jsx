@@ -24,7 +24,7 @@ const Footer = () => {
             </li>
             <li>
               <FaPhone className={style.contactIcon} />
-              <span>+994 12 345 67 89</span>
+              <span>+994 55  322  67 63</span>
             </li>
             <li>
               <FaClock className={style.contactIcon} />
@@ -47,9 +47,9 @@ const Footer = () => {
         <div className={style.footerSection}>
           <h4 className={style.sectionTitle}>Bizi izləyin</h4>
           <div className={style.socialLinks}>
-            <a href="#" className={style.socialLink}>Facebook</a>
-            <a href="#" className={style.socialLink}>Instagram</a>
-            <a href="#" className={style.socialLink}>YouTube</a>
+            <a href="https://www.facebook.com/p/%C4%B0lahiyyat-m%C9%99scidi-100067997245266/?locale=az_AZ" className={style.socialLink}>Facebook</a>
+            <a href="https://www.instagram.com/ilahiyyatmscidi/" className={style.socialLink}>Instagram</a>
+            <a href="https://www.youtube.com/@%C4%B0lahiyyat1985" className={style.socialLink}>YouTube</a>
           </div>
         </div>
       </div>
