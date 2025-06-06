@@ -1,0 +1,273 @@
+.Header2DDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px;
+
+}
+.Header3DDiv{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+
+}
+.menu{
+    display: none;
+}
+.Header1{
+    font-size: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(250, 253, 255);
+    
+}
+.Header11{
+    font-size: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(240, 240, 240);
+}
+.Header2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(243, 248, 252);
+}
+.Header2DivNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0);
+
+}
+.HeaderNavbar1{
+    text-decoration: none;
+    color: rgb(226, 226, 226);
+    list-style-type: none;
+    padding: 10px;
+
+
+
+}
+
+@media(max-width:800px) {
+    .menu{
+        display: block;
+    }
+    .Header2DivNav{
+        display: none;
+    }
+    .Header3DDiv{
+        display: flex;
+        padding: 5px;
+
+    }
+    .Header2DDiv{
+        display: none;
+    }
+    .Header11{
+        font-size: 23px;}
+}
+
+  
+  .Header2DDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Header3DDiv {
+    display: none;
+  }
+  
+  .Header1, .Header11 {
+    font-size: 35px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+  }
+  
+  .Header2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fcfcfc;
+  }
+  
+  .Header2DivNav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px 0;
+  }
+  
+  .HeaderNavbar1 {
+    text-decoration: none;
+    color: rgb(251, 253, 255);
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+  }
+  
+  .HeaderNavbar1:hover {
+    background-color: rgba(5, 118, 255, 0.1);
+    border-radius: 5px;
+  }
+  
+  .menu {
+    display: none;
+  }
+  
+  @media (max-width: 800px) {
+    .menu {
+      display: block;
+    }
+    
+    .Header2DivNav {
+      display: none;
+    }
+    
+    .Header3DDiv {
+      display: flex;
+      padding: 5px;
+    }
+    
+    .Header2DDiv {
+      display: none;
+    }
+    
+    .Header11 {
+      font-size: 23px;
+    }
+
+  }
+  .Header1DDiv {
+    background-color: rgba(255, 255, 255, 0.87);
+    position: fixed; /* Headeri səhifənin yuxarısında sabitləyir */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Digər elementlərin üstündə olmasını təmin edir */
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.413);
+    
+    padding: 3px 0;
+    display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+   
+  }
+  
+  .Header2DDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Header3DDiv {
+    display: none;
+  }
+  
+  .Header1, .Header11 {
+    font-size: 35px;
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(0, 255, 115);
+  }
+  
+  .Header2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(7, 9, 11);
+  }
+  
+  .Header2DivNav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px 0;
+  }
+  
+  .HeaderNavbar1 {
+    text-decoration: none;
+    color: rgb(31, 244, 70);
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    font-family:'Times New Roman', Times, serif;
+
+  }
+  
+  .HeaderNavbar1:hover {
+    background-color: rgba(11, 195, 8, 0.758);
+    color: rgb(220, 223, 224);
+    border-radius: 5px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .menu {
+    display: none;
+  }
+  
+  @media (max-width: 800px) {
+    .menu {
+      display: block;
+    }
+    
+    .Header2DivNav {
+      display: none;
+    }
+    
+    .Header3DDiv {
+      display: flex;
+      padding: 5px;
+    }
+    
+    .Header2DDiv {
+      display: none;
+    }
+    
+    .Header11 {
+      font-size: 23px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .Header1DDiv{
+        display: block!important;
+    }
+
+  }
+  .Header1DDiv {
+    background-color: rgba(255, 255, 255, 0.194);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.413);
+    padding: 3px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Scroll olduqda tətbiq olunacaq stil */
+.Header1DDiv.scrolled {
+    background-color: rgb(255, 255, 255); /* Daha qatı ağ rəng */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Digər CSS qaydaları eyni qalır... */
+
+/* Scrolled vəziyyətində yazı rəngləri */
+.Header1DDiv.scrolled .Header1,
+.Header1DDiv.scrolled .Header11,
+.Header1DDiv.scrolled .Header2,
+.Header1DDiv.scrolled .HeaderNavbar1 {
+    color: #00f510; /* Daha tünd rəng */
+}
+
+.Header1DDiv.scrolled .HeaderNavbar1:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+/* Mobil üçün xüsusi stil */
+

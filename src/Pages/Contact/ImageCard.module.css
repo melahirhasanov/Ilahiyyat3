@@ -1,0 +1,74 @@
+.cardContainer {
+    width: 60%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 10%!important;
+  }
+  
+  .cardContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  .imageWrapper {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+  }
+  
+  .responsiveImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+  }
+  
+  .cardContainer:hover .responsiveImage {
+    transform: scale(1.03);
+  }
+  
+  .cardOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem 1.5rem 1.5rem;
+    color: white;
+  }
+  
+  .cardTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .cardDescription {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .cardContainer {
+      width: 90%;
+    }
+    
+    .cardTitle {
+      font-size: 1.2rem;
+    }
+    
+    .cardDescription {
+      font-size: 0.9rem;
+    }
+  }
